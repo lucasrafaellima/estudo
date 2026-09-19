@@ -1,66 +1,50 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const ButtonApp());
+  runApp(TestingApp());
 }
 
-class ButtonApp extends StatelessWidget {
-  const ButtonApp({super.key});
+class TestingApp extends StatelessWidget {
+  const TestingApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Button Types',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const Scaffold(body: ButtonTypesExample()),
+      home: MainPage(),
     );
   }
 }
 
-class ButtonTypesExample extends StatelessWidget {
-  const ButtonTypesExample({super.key});
+class MainPage extends StatefulWidget {
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+
+  int likes = 0;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(4.0),
-      child: Row(
-        children: <Widget>[
-          ButtonTypesGroup(enabled: true),
-          ButtonTypesGroup(enabled: false),
-          Spacer(),
-        ],
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 254, 255, 237),
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+        title: Text('Testando o sistema'),        
       ),
+      body: Center(
+        child: RawMaterialButton(
+          onPressed: () {
+            setState(() {
+              likes++;
+            });
+          },
+          fillColor: Colors.teal,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
+          constraints: BoxConstraints.tightFor(height: 50.0, width: 100.0),
+          child: Text('Foram clicadas $likes vezes!'),
+        ),
+      ),
+
     );
   }
 }
-
-class ButtonTypesGroup extends StatelessWidget {
-  const ButtonTypesGroup({super.key, required this.enabled});
-
-  final bool enabled;
-
-  @override
-  Widget build(BuildContext context) {
-    final VoidCallback? onPressed = enabled ? () {} : null;
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          ElevatedButton(onPressed: onPressed, child: const Text('Elevated')), //Botão elevado
-          FilledButton(onPressed: onPressed, child: const Text('Filled')), //Botão com tonalidade
-          FilledButton.tonal( 
-            onPressed: onPressed, //Botão com outra tonalidade
-            child: const Text('Filled Tonal'),
-          ),
-          OutlinedButton(onPressed: onPressed, child: const Text('Outlined')), //Botão com borda
-          TextButton(onPressed: onPressed, child: const Text('Text')), //Apenas botão de texto
-        ],
-      ),
-    );
-  }
-}
-
