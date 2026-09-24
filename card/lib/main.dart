@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.deepOrange,
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               CircleAvatar(
                 backgroundImage: AssetImage('images/jumento-03.jpg'),
@@ -33,58 +34,53 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'JetBrains Mono',
                 ),
               ),
-              Container(
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 25,
-                ),
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.email,
-                      size: 25,
-                      color: Colors.deepOrange,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      'jumentoevoluido@outlook.com',
-                      style: TextStyle(
-                        fontFamily: 'JetBrains Mono',
-                        color: Colors.deepOrange,
-                      ),
-                    ),
-                  ],
+              SizedBox(
+                height: 20,
+                width: 300,
+                child: Divider(
+                  color: Colors.deepOrange.shade100,
                 ),
               ),
-              Container(
+              Card(
                 color: Colors.white,
                 margin: EdgeInsets.symmetric(
                   vertical: 10,
                   horizontal: 25,
                 ),
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.phone,
-                      size: 25,
-                      color: Colors.deepOrange,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      '+55 82 8394-40593',
-                      style: TextStyle(
+                child: ListTile(
+                      leading: Icon(
+                        Icons.email,
+                        size: 25,
                         color: Colors.deepOrange,
-                        fontFamily: 'JetBrains Mono',
                       ),
-                    ),
-                  ],
+                      title: Text(
+                        'jumentoevoluido@outlook.com',
+                        style: TextStyle(
+                          fontFamily: 'JetBrains Mono',
+                          color: Colors.deepOrange,
+                        ),
+                      ),
+                ),
+              ),
+              Card(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 25,
+                ),
+                child: ListTile(
+                      leading: Icon(
+                        Icons.phone,
+                        size: 25,
+                        color: Colors.deepOrange,
+                      ),
+                      title: Text(
+                        '+55 83 9920-3029',
+                        style: TextStyle(
+                          fontFamily: 'JetBrains Mono',
+                          color: Colors.deepOrange,
+                        ),
+                      ),
                 ),
               ),
             ],
