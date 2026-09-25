@@ -12,7 +12,6 @@ void main() {
         ),
         body: SafeArea(
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(20),
